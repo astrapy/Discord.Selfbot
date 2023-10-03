@@ -1,6 +1,7 @@
 # Discord.Selfbot
 Super fast Selfbot nuker/spammer
 Please note that since its an user account you can quickly get rate limited.
+Selfbots are against the Discord TOS!
 
 
 ## 🔥 Features
