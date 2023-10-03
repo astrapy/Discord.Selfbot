@@ -41,7 +41,7 @@ async def help(ctx):
     help = "**Commands:**\n"
     help += f"```{prefix}dmall - Send a DM to all members.\n"
     help += f"{prefix}scrape - Scrape all userids from all members and save it.\n"
-    help += f"{prefix}nuke <channels to create> <message to send> - You know what it does...```"
+    help += f"{prefix}nuke - You know what this does...```"
 
     help += "https://github.com/astrapy"
 
