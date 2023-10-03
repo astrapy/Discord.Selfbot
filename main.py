@@ -54,19 +54,21 @@ async def dmall(ctx, *, message: str = None):
 
     if message is None:
         message = config.get("dmall", {}).get("message", "")
+    
     members = ctx.guild.members
 
-    for member in members:
-        if member == astrapy.user:
-            continue
+    async def send_message(member):
         try:
             await member.send(message)
-            await asyncio.sleep(1)
         except discord.Forbidden:
             print(f"Could not send a message to ({member.id}). Skipping.")
         except Exception as e:
             print(f"Error while sending a message to ({member.id}): {e}")
+
+    await asyncio.gather(*[send_message(member) for member in members if member != astrapy.user])
+
     await ctx.send("DM successfully sent to all members.")
+
 
 
 @astrapy.command()
