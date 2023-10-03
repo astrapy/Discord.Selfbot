@@ -1,7 +1,5 @@
 # Discord.Selfbot
-This is an super fast server nuker.
-Did someone make you mad?
-Alright just configure this selfbot and let them know what will happen!
+Super fast Selfbot nuker/spammer
 
 
 ## 🔥 Features
