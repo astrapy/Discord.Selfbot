@@ -6,12 +6,12 @@ Very simple selfbot but its fast...
 
 ## 🔥 Features
 - DM All Members
-- Nuke
+- Nuke Server
 - Scrape Member IDS
 - Comment a suggestion in my discord so i can add it!
 
 ## ✍️ Usage
-1. Open `config.json` and configur the selfbot and its ready!
+1. Open `config.json` and configure the selfbot and its ready!
 2. Open CMD and type in: python main.py
 3. READY!
 
