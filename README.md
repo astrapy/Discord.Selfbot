@@ -15,6 +15,11 @@ Very simple selfbot but its fast...
 2. Open CMD and type in: python main.py
 3. READY!
 
+## 📜 Updates
+- Added command: spamchannels [amount] - Send a message to all the available text channels.
+- Added command: dm [user] [amount] - Send a DM to a specific user custom amount times.
+- Make sure you configure everything in the config.json!
+
 ## ✨ Issues / Doubts
 
 - If you have any questions do not hesitate to enter my discord: [https://discord.gg/Un63v2truD](https://discord.gg/baMAyb4jeG)
