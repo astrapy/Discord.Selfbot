@@ -39,9 +39,11 @@ async def help(ctx):
     await ctx.message.delete()
 
     help = "**Commands:**\n"
-    help += f"```{prefix}dmall - Send a DM to all members.\n"
-    help += f"{prefix}scrape - Scrape all userids from all members and save it.\n"
-    help += f"{prefix}nuke - You know what this does...```"
+    help += f"`{prefix}nuke` - Fuck the whole server up basically.\n"
+    help += f"`{prefix}abusechannels [amount]` - Send a message to all the available text channel.\n"
+    help += f"`{prefix}dmall` - Send a DM to all members.\n"
+    help += f"`{prefix}dm [user] [amount]` - Send a DM to a specific user custom amount times.\n"
+    help += f"`{prefix}scrape` - Save all user IDs from server members to an file.\n"
 
     help += "https://github.com/astrapy"
 
@@ -54,7 +56,6 @@ async def dmall(ctx, *, message: str = None):
 
     if message is None:
         message = config.get("dmall", {}).get("message", "")
-    
     members = ctx.guild.members
 
     async def send_message(member):
@@ -68,7 +69,6 @@ async def dmall(ctx, *, message: str = None):
     await asyncio.gather(*[send_message(member) for member in members if member != astrapy.user])
 
     await ctx.send("DM successfully sent to all members.")
-
 
 
 @astrapy.command()
@@ -122,6 +122,54 @@ async def create(ctx):
         print(
             f"Error while creating a channel or sending messages into {ctx.channel.name} ({ctx.channel.id}): {e}"
         )
+
+
+@astrapy.command()
+async def abusechannels(ctx, amount_to_send: int = 1):
+    message = config.get("abusechannels", {}).get("message", "")
+
+    if not message:
+        print("Empty message in config.")
+        return
+    if amount_to_send <= 0:
+        await ctx.send("Please specify a number for the amount to send.")
+        return
+    for channel in ctx.guild.channels:
+        if (
+            isinstance(channel, discord.TextChannel)
+            and channel.permissions_for(ctx.me).send_messages
+        ):
+            try:
+                for _ in range(amount_to_send):
+                    await channel.send(message)
+            except discord.Forbidden:
+                print(f"Could not send a message to ({channel.id}).")
+            except Exception as e:
+                print(f"Error while sending a message to ({channel.id}): {e}")
+    await ctx.send(f"Message sent {amount_to_send} times to all available channels!")
+
+
+@astrapy.command()
+async def dm(ctx, user: discord.User, amount_to_spam: int, *, message: str = None):
+    await ctx.message.delete()
+
+    if message is None:
+        message = config.get("dm", {}).get("message", "")
+
+    async def message_send(member):
+        try:
+            await member.send(message)
+        except discord.Forbidden:
+            print(f"Could not send a message to ({member.id}).")
+        except Exception as e:
+            print(f"Error while sending a message to ({member.id}): {e}")
+
+    tagged = [user] * amount_to_spam
+
+    for member in tagged:
+        if member != ctx.bot.user:
+            await message_send(member)
+    await ctx.send(f"Successfully spammed {user.mention} {amount_to_spam} times!")
 
 
 @astrapy.event
