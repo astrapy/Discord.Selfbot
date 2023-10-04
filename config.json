@@ -1,15 +1,24 @@
 {
     "token": "",
     "prefix": "$",
+
     "dmall": {
         "message": "Astra Tools \nhttps://discord.gg/baMAyb4jeG \nhttps://github.com/astrapy"
     },
+
+    "dm": {
+      "message": "Astra Tools \nhttps://discord.gg/baMAyb4jeG \nhttps://github.com/astrapy"
+    },
+
+    "spamchannels": {
+      "message": "Astra Tools \nhttps://discord.gg/baMAyb4jeG \nhttps://github.com/astrapy"
+    },
+
     "nuke": {
       "message": "@everyone \nhttps://github.com/astrapy \nhttps://discord.gg/baMAyb4jeG"
     },
-
     "channel_name": "Astra Tools",
     "amount_messages": 10,
-    "amount_channels": 10
-  }
+    "amount_channels": 50
+}
   
