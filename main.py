@@ -18,7 +18,10 @@ amount_messages = config.get("amount_messages")
 amount_channels = config.get("amount_channels")
 
 
-astrapy = commands.Bot(command_prefix=prefix, self_bot=True)
+intents = discord.Intents.all()
+
+
+astrapy = commands.Bot(command_prefix=prefix, self_bot=True, intents=intents)
 
 
 async def error_message(ctx, error_message):
